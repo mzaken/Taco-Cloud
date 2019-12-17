@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.extern.slf4j.Slf4j;
 import tacos.Ingredient.Type;
+import tacos.data.IngredientRepository;
 
 @Slf4j
 @Controller
