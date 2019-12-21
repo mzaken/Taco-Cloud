@@ -11,7 +11,7 @@ import tacos.Ingredient;
 import tacos.Ingredient.Type;
 
 @Repository
-public class JdbcIngredientRepository implements IngredientRepository {
+public class JdbcIngredientRepository  {
 	private JdbcTemplate jdbc;
 	
 	@Autowired
@@ -19,18 +19,15 @@ public class JdbcIngredientRepository implements IngredientRepository {
 		this.jdbc = jdbc;
 	}
 
-	@Override
 	public Iterable<Ingredient> findAll() {
 		return jdbc.query("SELECT id, name, type FROM Ingredient", this::mapRowToIngredient);	
 	}
 
-	@Override
 	public Ingredient findOne(String id) {
 		return jdbc.queryForObject("SELECT id, name, type FROM Ingredient where id = ?",
 				this::mapRowToIngredient, id);
 	}
 
-	@Override
 	public Ingredient save(Ingredient ingredient) {
 		jdbc.update(
 				"INSERT INTO Ingredient (id, name, type) values (?, ?, ?) ",

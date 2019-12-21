@@ -16,7 +16,7 @@ import tacos.Ingredient;
 import tacos.Taco;
 
 @Repository
-public class JdbcTacoRepository implements TacoRepository {
+public class JdbcTacoRepository {
 	
 	private JdbcTemplate jdbc;
 	
@@ -24,7 +24,6 @@ public class JdbcTacoRepository implements TacoRepository {
 		this.jdbc = jdbc;
 	}
 
-	@Override
 	public Taco save(Taco taco) {
 		long tacoId = saveTacoInfo(taco);
 		taco.setId(tacoId);

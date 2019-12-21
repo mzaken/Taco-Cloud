@@ -63,6 +63,8 @@ public class DesignTacoController {
 	@PostMapping
 	public String processDesign(@Valid Taco design, Errors errors, @ModelAttribute Order order) {
 	  if (errors.hasErrors()) {
+		  
+		  errors.getFieldErrors().forEach(e -> System.out.println(e.getDefaultMessage()));
 		  return "design";
 	  }
 	
